@@ -1,3 +1,6 @@
 [submodule "darknet_ros"]
 	path = darknet_ros
-	url = ./darknet_ros
+	url = git@github.com:leggedrobotics/darknet_ros.git
+[submodule "ros-object-mask-generator"]
+	path = mask-generation
+	url = git@github.com:adarshrs/ros-object-mask-generator.git
