@@ -1,6 +1,6 @@
 <launch>
     <include file="$(find object-tracking)/launch/usb_cam.launch"/>
-    <include file="$(find mask-generation)/launch/color_mask.launch"/>
+    <include file="$(find ros-object-mask-generation)/launch/color_mask.launch"/>
 
     <node name="object_tracker" pkg="object-tracking" type="color_filtered.py" output="screen"/>
 
