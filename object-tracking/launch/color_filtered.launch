@@ -1,8 +1,18 @@
 <launch>
-    <include file="$(find feature-detect)/launch/usb_cam.launch"/>
-    <include file="$(find mask-generation)/launch/color_mask.launch"/>
+    <include file="$(find object-tracking)/launch/usb_cam.launch"/>
 
-    <node name="feature_detect" pkg="feature-detect" type="color_filtered.py" output="screen"/>
+    <node name="object_tracker" pkg="object-tracking" type="color_filtered.py" output="screen">
+        <param name="lower_h" value="0"/>
+        <param name="lower_s" value="120"/>
+        <param name="lower_v" value="100"/>
+
+        <param name="upper_h" value="12"/>
+        <param name="upper_s" value="255"/>
+        <param name="upper_v" value="255"/>
+
+        <param name="filter" value="True"/>
+        <param name="window_size" value="5"/>
+    </node>
 
     <!-- <node name="camera_view" pkg="image_view" type="image_view" respawn="false" output="screen">
         <remap from="image" to="/usb_cam/image_raw"/>
