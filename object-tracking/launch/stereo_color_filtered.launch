@@ -1,0 +1,25 @@
+<launch>
+    <group ns="left">
+        <include file="$(find object-tracking)/launch/usb_cam.launch">
+            <arg name="source" value="/dev/video0" />
+        </include>
+        
+        <include file="$(find ros-object-mask-generation)/launch/color_mask.launch">
+            <param name="image_source" value="/left/usb_cam/image_raw"/>
+        </include> 
+
+        <node name="object_tracker" pkg="object-tracking" type="color_filtered.py" output="screen"/>
+    </group>
+
+    <group ns="right">
+        <include file="$(find object-tracking)/launch/usb_cam.launch">
+            <arg name="source" value="/dev/video1" />
+        </include>
+        
+        <include file="$(find ros-object-mask-generation)/launch/color_mask.launch">
+            <param name="image_source" value="/right/usb_cam/image_raw"/>
+        </include> 
+
+        <node name="object_tracker" pkg="object-tracking" type="color_filtered.py" output="screen"/>
+    </group>
+</launch>
